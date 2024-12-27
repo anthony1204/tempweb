@@ -1,8 +1,44 @@
 <head>
 <style>
-body{
-background-color: light-grey;
-}
+body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        #menuButton {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+        #menu {
+            display: none;
+            position: fixed;
+            top: 50px;
+            right: 10px;
+            background-color: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+        #menu select, #menu button {
+            margin-bottom: 10px;
+        }
+        #menu button {
+            background-color: #28A745;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
 div {
   margin: auto;
   width: 50%;
@@ -22,6 +58,35 @@ div {
             } else {
                 document.exitFullscreen();
             }
+        });
+    </script>
+
+  <button id="menuButton">Open Menu</button>
+    <div id="menu">
+        <select id="colorDropdown">
+            <option value="red">Red</option>
+            <option value="blue">Blue</option>
+            <option value="green">Green</option>
+            <option value="yellow">Yellow</option>
+            <option value="purple">Purple</option>
+          <option value="grey">Grey (gray..)</option>
+        </select>
+        <button id="applyButton">Apply</button>
+    </div>
+
+    <script>
+        const menuButton = document.getElementById('menuButton');
+        const menu = document.getElementById('menu');
+        const applyButton = document.getElementById('applyButton');
+        const colorDropdown = document.getElementById('colorDropdown');
+
+        menuButton.addEventListener('click', () => {
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        });
+
+        applyButton.addEventListener('click', () => {
+            document.body.style.backgroundColor = colorDropdown.value;
+            menu.style.display = 'none';
         });
     </script>
   
