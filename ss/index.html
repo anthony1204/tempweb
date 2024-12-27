@@ -50,13 +50,15 @@ div {
 </style>
 </head><body><div><h1>you think this is some anthony screensaver?</h1><p>nah not rly</p></div>
 <script>
-        document.body.addEventListener('click', function() {
-            if (!document.fullscreenElement) {
-                document.documentElement.requestFullscreen().catch(err => {
-                    console.error(`error.. ${err.message} (${err.name})`);
-                });
-            } else {
-                document.exitFullscreen();
+        document.addEventListener('keydown', function(event) {
+            if (event.code === 'Space') {
+                if (!document.fullscreenElement) {
+                    document.documentElement.requestFullscreen().catch(err => {
+                        console.error(`Error attempting to enable fullscreen mode: ${err.message} (${err.name})`);
+                    });
+                } else {
+                    document.exitFullscreen();
+                }
             }
         });
     </script>
